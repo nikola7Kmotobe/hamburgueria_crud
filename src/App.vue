@@ -1,15 +1,48 @@
-<script setup>
-import Navbar from './components/Navbar.vue'
-import Footer from './components/Footer.vue'
-</script>
-
 <template>
   <div>
-    <Navbar />
+    <Navbar :img_src="img_src" :alt="alt" />
     
+    <RouterView />
+   
     <Footer />
+    
 </div>
 </template>
 
-<style scoped>
+<script>
+  import Navbar from './components/Navbar.vue'
+  import Footer from './components/Footer.vue'
+  export default{
+    data(){
+      return{
+        img_src:"src/img/logo.png",
+        alt:"Logo Hamburguer"
+      }
+    },
+    components:{
+      Navbar,
+      Footer
+    }
+
+  } 
+</script>
+<style>
+  * {
+    font-family: Helvetica;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .main-container {
+    margin: 50px;
+    min-height: 250px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 30px;
+    color: #222;
+  }
 </style>
