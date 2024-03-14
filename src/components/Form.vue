@@ -1,7 +1,7 @@
 <template>
     <Message :msg="msg" v-show="msg" />
     <div>
-      <form id="burger-form" method="POST" @submit.prevent="createBurger">
+      <form id="burger-form"  @submit.prevent="createBurger">
         <div class="input-container">
           <label for="nome">Nome do cliente:</label>
           <input type="text" id="nome" name="nome" v-model="nome" placeholder="Digite o seu nome">
@@ -59,8 +59,26 @@
         this.carnes = data.carnes
         this.opcionaisdata = data.opcionais
       },
-      createBurger() {
-        // implemente sua lógica para criar o burger aqui
+      async createBurger() {
+          
+          const data = {
+            nome: this.nome,
+            carne: this.carne,
+            pao: this.pao,
+            opcionais: Array.from(this.opcionais),
+            status: "Solicitado"
+          }
+          const dataJson = JSON.stringify(data);  
+
+          const req = await fetch("http://localhost:3000/burgers", {
+            method: "POST",
+            headers: { "Content-Type" : "application/json" },
+            body: dataJson
+          });
+
+          const res = await req.json();
+
+          console.log(res);
       }
     },
     mounted() {
