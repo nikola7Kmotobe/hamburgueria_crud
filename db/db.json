@@ -87,6 +87,16 @@
         "Bacon"
       ],
       "status": "Solicitado"
+    },
+    {
+      "id": "1367",
+      "nome": "KADUU",
+      "carne": "Alcatra",
+      "pao": "Italiano Branco",
+      "opcionais": [
+        "Pepino"
+      ],
+      "status": "Solicitado"
     }
   ]
 }
